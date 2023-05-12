@@ -1,0 +1,362 @@
+﻿body {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* header-section */
+
+.header-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    .header-section img {
+        width: 50.48px;
+        height: 46.29px;
+        margin-top: 5%;
+    }
+
+    .header-section p {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 47px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: #D04F4F;
+        margin: 0;
+    }
+
+/* searchBox */
+
+input[type="search"]::placeholder {
+    padding-left: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    height: 69px;
+}
+
+.topnav {
+    margin: 1% 10% 1% 10%;
+}
+
+    .topnav input {
+        border: 1px solid #E7E7E7;
+        width: 100%;
+        background-color: #E7E7E7;
+        border-radius: 5px;
+        height: 69px;
+        font-size: 18px;
+        font-family: 'Lato';
+        font-weight: 400;
+        line-height: 22px;
+    }
+
+    .topnav i {
+        position: relative;
+        top: 30%;
+        right: 8%;
+        cursor: pointer;
+    }
+
+
+/* dropdown  */
+
+.dropBox {
+    margin: 1% 10% 1% 10%;
+}
+
+
+
+.dropdown {
+    position: relative;
+    display: flex;
+}
+
+    .dropdown form input {
+        margin-right: 5%;
+    }
+
+.icone-preview, .icone-preview-2, .icone-preview-3 {
+    cursor: pointer;
+}
+
+/* card recipe */
+
+.card-section {
+    display: grid;
+    grid-template-columns: 0fr;
+    justify-content: center;
+}
+
+@media (min-width : 850px) {
+    .card-section {
+        display: grid;
+        grid-template-columns: 0fr 0fr;
+        column-gap: 50px;
+        margin: 1% 10% 1% 10%;
+    }
+
+    article {
+        width: 380px;
+        height: 364px;
+        padding-top: 8%;
+        justify-content: center;
+    }
+}
+
+@media (min-width : 1325px) {
+    .card-section {
+        display: grid;
+        grid-template-columns: 0fr 0fr 0fr;
+        column-gap: 50px;
+        margin: 1% 10% 1% 10%;
+    }
+
+    article {
+        width: 380px;
+        height: 364px;
+        padding-top: 8%;
+        justify-content: center;
+    }
+}
+
+
+article {
+    width: 380px;
+    height: 364px;
+    padding-top: 8%;
+    padding-left: 10px;
+}
+
+.recipe-img {
+    position: relative;
+    top: 2%;
+}
+
+.recipe-detail {
+    background-color: #E7E7E7;
+}
+
+.recipe-head-txt {
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+    .recipe-head-txt h5 {
+        padding-left: 5%;
+    }
+
+.time {
+    position: relative;
+    top: 25px;
+    padding-right: 5%;
+}
+
+.recipe-ingredients {
+    list-style: none;
+    width: 171px;
+    height: 105px;
+}
+
+
+.container-details {
+    justify-content: center;
+    align-items: center;
+}
+
+    .container-details ul {
+        padding: 0;
+    }
+
+.recipe-description {
+    width: 170px;
+    height: 109px;
+}
+
+.container-details {
+    display: flex;
+    font-size: 12px;
+}
+
+
+/* card recipe defaut  */
+
+.recipe-defaut {
+    background-color: #E7E7E7;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+}
+
+.recipe-defaut-txt {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+/* test search input  */
+
+.search-input {
+    display: flex;
+}
+
+#search-ingredient {
+    width: 170px;
+    background-color: #3282F7;
+    border-radius: 5px;
+    border: 0;
+    color: #FFFFFF;
+    outline: none;
+}
+
+    #search-ingredient::placeholder {
+        color: #FFFFFF;
+    }
+
+#search-appareil {
+    width: 170px;
+    background-color: #68D9A4;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    color: #FFFFFF;
+}
+
+    #search-appareil::placeholder {
+        color: #FFFFFF;
+    }
+
+#search-ustensiles {
+    width: 170px;
+    background-color: #ED6454;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    color: #FFFFFF;
+}
+
+    #search-ustensiles::placeholder {
+        color: #FFFFFF;
+    }
+
+.search-input i {
+    position: relative;
+    right: 20%;
+    top: 40%;
+}
+
+
+
+/* essai block dropdown  */
+.dropdown-appareil {
+    margin: 0;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    width: 633px;
+    height: 200px;
+    background-color: #68D9A4;
+    display: none;
+}
+
+.dropdown-ustensiles {
+    margin: 0;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    width: 633px;
+    height: 200px;
+    background-color: #ED6454;
+    display: none;
+}
+
+.dropdown-ingredient {
+    margin: 0;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    width: 633px;
+    min-height: 200px;
+    background-color: #3282F7;
+    display: none;
+}
+
+#dropdown-ingredient-list, #dropdown-appareil-list, #dropdown-ustensiles-list {
+    columns: 3;
+    overflow: auto;
+    margin: 0;
+}
+
+    #dropdown-ingredient-list li, #dropdown-appareil-list li, #dropdown-ustensiles-list li {
+        font-weight: 400;
+        font-size: 18px;
+        list-style-type: none;
+        color: white;
+        line-height: 21.6px;
+        cursor: pointer;
+        height: 22px;
+        padding-bottom: 5px;
+    }
+
+
+/* tagSection */
+
+.tag-section {
+    margin: 1% 10% 1% 10%;
+    display: flex;
+}
+
+.dropdown-appliance-tag {
+    width: 135px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #68D9A4;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 15px;
+}
+
+.dropdown-ingredients-tag {
+    width: 135px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #3282F7;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 15px;
+}
+
+.dropdown-ustensils-tag {
+    width: 135px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #D04F4F;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 15px;
+}
+
+    .dropdown-appliance-tag i, .dropdown-ingredients-tag i, .dropdown-ustensils-tag i {
+        color: #FFFFFF;
+        padding-top: 19px;
+    }
+
+    .dropdown-appliance-tag p, .dropdown-ingredients-tag p, .dropdown-ustensils-tag p {
+        padding-left: 5px;
+        padding-top: 5px;
+        font-weight: 700;
+        font-size: 14px;
+        color: #FFFFFF;
+    }
