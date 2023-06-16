@@ -11,7 +11,7 @@ export class CardRecip {
         this.quantity = data.quantity
 
     }
-
+    //mise en place carte recette
     getCardDom() {
         return `
         <article id="${this.id}" class="fiche-recette">

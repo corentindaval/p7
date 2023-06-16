@@ -1,4 +1,4 @@
-const ingredientSearch = document.querySelector("#search-ingredient")
+﻿const ingredientSearch = document.querySelector("#search-ingredient")
 const appareilSearch = document.querySelector("#search-appareil")
 const ustensileSearch = document.querySelector('#search-ustensiles')
 
@@ -8,13 +8,12 @@ ingredientSearch.addEventListener('keyup', tagSearchIngredient)
 appareilSearch.addEventListener('keyup', tagSearchAppareil)
 ustensileSearch.addEventListener('keyup', tagSearchUstensile)
 
-
+//recherche par ingredients
 function tagSearchIngredient(e) {
 
     const filterMainIngredient = e.target.value.toUpperCase();
     const dropdownIngredientList = document.getElementById("dropdown-ingredient-list");
-    const listIngredient = dropdownIngredientList.getElementsByTagName("li")
-
+    const listIngredient = dropdownIngredientList.getElementsByTagName("li");
     for (let i = 0; i < listIngredient.length; i++) {
         const txtValue = listIngredient[i].textContent || listIngredient[i].innerText;
         if (txtValue.toUpperCase().indexOf(filterMainIngredient) > -1) {
@@ -25,6 +24,7 @@ function tagSearchIngredient(e) {
     }
 }
 
+//recherche par appareils
 function tagSearchAppareil(e) {
 
     const filterMainAppareil = e.target.value.toUpperCase();
@@ -41,7 +41,7 @@ function tagSearchAppareil(e) {
     }
 }
 
-
+//recherche par ustensiles
 function tagSearchUstensile(e) {
 
     const filterMainUstensile = e.target.value.toUpperCase();

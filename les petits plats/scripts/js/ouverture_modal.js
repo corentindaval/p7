@@ -15,7 +15,7 @@ const appareilInput = document.getElementById('search-appareil');
 const ustensileInput = document.getElementById('search-ustensiles');
 
 
-
+//modale ingredients
 function openModalIngredient() {
     if (dropdownIngredient.style.display === 'none') {
         dropdownIngredient.style.display = 'block';
@@ -32,6 +32,7 @@ function openModalIngredient() {
     }
 }
 
+//modale appareils
 function openModalAppareil() {
     if (dropdownAppareil.style.display === 'none') {
         dropdownAppareil.style.display = 'block';
@@ -47,7 +48,9 @@ function openModalAppareil() {
         iconeTag2.style.transform = 'rotate(0deg)';
     }
 }
-cd 
+
+
+//modale ustensiles
 function openModalUstensiles() {
     if (dropdownUstensiles.style.display === 'none') {
         dropdownUstensiles.style.display = 'block';
