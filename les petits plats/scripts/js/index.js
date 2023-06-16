@@ -192,7 +192,7 @@ export function filterData() {
     */
 
     //version avec for
- //   /*
+    /*
     for (let currentRecipes of recipes) {
         let ingredientInside = false;
         console.log("recherche:" + searchString);
@@ -213,8 +213,8 @@ export function filterData() {
             recipesSorted.push(currentRecipes);
         }
     }
-  //  */
-    /*
+   */
+  //  /*
     //version avec for each
 
     recipes.forEach(function (currentRecipes) {
@@ -242,7 +242,7 @@ export function filterData() {
         }
         // console.log("recette sortie"+recipesSorted);
     });
-    */
+ //   */
 
 
 
