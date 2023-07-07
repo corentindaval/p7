@@ -28,7 +28,6 @@ export function applianceItem() {
     } else {
         for (let i = 0; i < currentRecipes.length; i++) {
             let appliances = currentRecipes[i].appliance;
-            // console.log("test 3 : " + appliances);liste appareils
             allAppliance.push(appliances);
         }
     }
@@ -39,7 +38,6 @@ export function applianceItem() {
     applianceNoRepeat.forEach((item) => {
         let appLi = document.createElement('li');
         appLi.innerText = item;
-      // console.log("test2 : " + item);liste ustensil
         listAppareil.appendChild(appLi);
 
         // click  des element appliance 
@@ -109,7 +107,7 @@ export function ingredientItem() {
     }
 
   
-    // console.log(allIngredients)
+   
     listIngredient.innerHTML = "";
     const ingredientNoRepeat = new Set(allIngredients.sort());
 
@@ -147,32 +145,23 @@ export function ustensilsItem() {
     allUstensils = [];
 
     if (list_recette_selectionner != "") {
+      /*  var listustensil = [];
         list_recette_selectionner.forEach(function (element) {
-            for (let i = 0; i < currentRecipes.length; i++) {
-                if (element.ustensils == currentRecipes[i].ustensils) {
-                    let ustensils = currentRecipes[i].ustensils;
-                    ustensils.filter((ustensil) => {
-                        if (allUstensils != "") {
-                            var dejapresent = false;
-                            allUstensils.forEach(function (ellist) {
-                                if (ellist == ustensil) {
-                                    dejapresent = true;
-                                }
-                            })
-                            if (dejapresent == false) {
-                                allUstensils.push(ustensil);
-                            }
-
-                        } else {
-                            allUstensils.push(ustensil);
-                        }
-                       
-                      
-                    })
-                }
-            }
+            element.ustensils.forEach(function (item) {
+                listustensil.push(item);
+                console.log("ustensile : " + item);
+            })
+           
+           
         });
-
+        allUstensils = [...new Set(listustensil)];
+        console.log("set ustensil:"+allUstensils)*/
+        for (let i = 0; i < list_recette_selectionner.length; i++) {
+            let ustensils = list_recette_selectionner[i].ustensils;
+            ustensils.filter((ustensil) => {
+                allUstensils.push(ustensil)
+            })
+        }
     } else {
         for (let i = 0; i < currentRecipes.length; i++) {
             let ustensils = currentRecipes[i].ustensils;

@@ -7,26 +7,26 @@ import { toLowerCaseInclude } from "../js/cas_suivant.js";
 
 // test
 
-// appel des selector et de currentRecipes, variable libre 
+// appel des selectors et de currentRecipes, variable libre 
 export let currentRecipes = recipes;
 export var list_recette_selectionner = [];
-
+var sauv_tri=[];
 const cardsSection = document.querySelector(".card-section");
 const searchBar = document.querySelector('#search');
 //var list_recette_selectionner = [];
 
 ingredientItem()
 
-// function qui recupere recipe et l'affiche
+// fonction qui récupère recipe et l'affiche
 function getUser() {
     // const res = recipes
     currentRecipes = orderList(recipes);
     createRecipesList(currentRecipes);
-    // console.log(currentRecipes)
+   
 }
 
 
-// function pour trier toute les recettes par ordre alphabetique avec sort 
+// fonction pour trier toutes les recettes par ordre alphabetique avec sort 
 function orderList(data) {
 
     const orderData = data.sort((a, b) => {
@@ -44,8 +44,8 @@ function orderList(data) {
 }
 
 
-// function creant nos card en utilisant la class et le constructor 
-// et utilisation du foreach pour recuperer les donner a injecter dans CardRecip
+// fonction créant les cards en utilisant la class et le constructor 
+// et utilisation du foreach pour récupérer les données à injecter dans CardRecip
 function createRecipesList(userList) {
     userList.forEach(user => {
 
@@ -57,10 +57,10 @@ function createRecipesList(userList) {
 }
 
 // event au keyup sur la searchBar
-searchBar.addEventListener("keyup", filterData);//declenchement de filterData lorsque l'on rempli l'input de recherche
+searchBar.addEventListener("keyup", filterData);//déclenchement de filterData lorsque l'on rempli l'input de recherche
 
-// recuperation des tags en utilisant ${category} sur les querySelector > p 
-// Et les push dans l'array tagNames selon leut innerText 
+// récupération des tags en utilisant ${category} sur les querySelector > p 
+// Et les push dans l'array tagNames selon leur innerText 
 function getUserSelectedTags(category) {
     const tagsNames = [];
     const tagsNodeElements = document.querySelectorAll(`.dropdown-${category}-tag > p`)
@@ -70,35 +70,34 @@ function getUserSelectedTags(category) {
         }
     }
     return tagsNames;
-    console.log("tagname:" + tagsNames);
+   
 }
 
-//fonction de recherche et trie
+//fonction de recherche et tri
 export function filterData() {
     currentRecipes = orderList(recipes);
 
     cardsSection.innerHTML = "";
 
-    const searchString = document.getElementById('search')?.value.toLowerCase();//bar de recherche
+    const searchString = document.getElementById('search')?.value.toLowerCase();//barre de recherche
     const selectedTagsIngredients = getUserSelectedTags('ingredients');//tags ingredient
     const selectedTagsAppliance = getUserSelectedTags('appliance');//tags appareils
     const selectedTagsUstensils = getUserSelectedTags('ustensils');//tags ustensils
     var listtagingredient = [];
     var listtagustensil = [];
     var listtagappareil = [];
+    var tri = [];
 
-    //recup des tag selectionner
+    //récuperation des tag selectionnés
     const selectedTagsObject = {
         ingredients: selectedTagsIngredients,
         appliance: selectedTagsAppliance,
         ustensils: selectedTagsUstensils
     }
-    console.log("ingredients:" + selectedTagsIngredients);
-    console.log("appareils:" + selectedTagsAppliance);
-    console.log("ustensils:" + selectedTagsUstensils);
+   
 
-    // creation d'une function  formattedRecipeSubData avec les recipes et les  tagCategory en param
-    //On utilisise switch case break pour donner l'instruction voulu et retourner ce que nous voulons 
+    // création d'une fonction  formattedRecipeSubData avec les recipes et les  tagCategory en param
+    //On utilise switch case break pour donner l'instruction voulue et retourner ce que nous voulons 
     // selon que ce soit un ingredient une aplliance ou un ustensil
     // nous retournons le resultat dans l'array formattedSubData
     const formattedRecipeSubData = function (recipe, tagCategory) {
@@ -106,7 +105,7 @@ export function filterData() {
         switch (tagCategory) {
             case 'ingredients':
                 formattedSubData = recipe.ingredients.map((el) => el.ingredient);
-                console.log("test data: " + formattedSubData);
+               
                 break;
             case 'appliance':
                 formattedSubData = [recipe.appliance];
@@ -117,7 +116,7 @@ export function filterData() {
             default:
                 break;
         }
-       // console.log("data:" + formattedSubData);
+      
         return formattedSubData;
     }
 
@@ -131,7 +130,7 @@ export function filterData() {
         }
     }
 
-    // var filteredData qui nous compare par rapport a recipe les tag selectionner et les input principale
+    // var filteredData qui compare par rapport à recipe les tags selectionnés et les inputs principaux
     let filteredData = currentRecipes.filter(recipe => {
         for (const tagCategory in selectedTagsObject) {
             if (selectedTagsObject[tagCategory].length > 0) {
@@ -146,7 +145,7 @@ export function filterData() {
     });
 
 
-    // condition qui compare la recherche sur l'input de search bar  la description les ingredients et le name
+    // condition qui compare la recherche de l'input de search bar à  la description des ingredients et au name
 
     let recipesSorted = [];
 
@@ -166,7 +165,7 @@ export function filterData() {
    /* for (let currentRecipes of recipes) {
 
         let ingredientInside = false;
-        console.log("recherche:" + searchString);
+       
        
         var nbmots = 0;
         recherche.forEach(function (element) {
@@ -192,7 +191,7 @@ export function filterData() {
     */
 
     //version avec for
- //   /*
+    /*
     for (let currentRecipes of recipes) {
         let ingredientInside = false;
         console.log("recherche:" + searchString);
@@ -203,7 +202,7 @@ export function filterData() {
                     ingredientInside = true;
                 }
             }
-            //cherche les recette qui inclu le contenu de la bar de recherche dans leur nom,description ou ingredient
+            //cherche les recettes qui comprennent le contenu de la barre de recherche dans leur nom,description ou ingredient
             if (currentRecipes.name.toLowerCase().includes(element) || currentRecipes.description.toLowerCase().includes(element) || ingredientInside) {
                 nbmots += 1;
             }
@@ -213,14 +212,14 @@ export function filterData() {
             recipesSorted.push(currentRecipes);
         }
     }
-  //  */
-    /*
+   */
+  //  /*
     //version avec for each
 
     recipes.forEach(function (currentRecipes) {
 
         let ingredientInside = false;
-        console.log("recherche:" + searchString);
+     
 
         var nbmots = 0;
         recherche.forEach(function (element) {
@@ -236,28 +235,20 @@ export function filterData() {
                 nbmots += 1;
             }
         });
-        console.log("nbmots:" + nbmots + " recherche:" + recherche.length);
+       
         if (nbmots == recherche.length) {
             recipesSorted.push(currentRecipes);
         }
         // console.log("recette sortie"+recipesSorted);
     });
-    */
-
-
-
-
-
-
-
-
+ //   */
 
     // createRecipesList(recipesSorted);
 
     //currentRecipes = filteredData;
-    console.log("test:" + recipesSorted);
+    
 
-    // Si filteredData est egale a aucune card return message recette erreur 
+    // Si filteredData est égal à aucune card alors return message recette erreur 
     if (filteredData == 0) {
         return cardsSection.innerHTML = `
         <div class="recipe-defaut">
@@ -268,7 +259,7 @@ export function filterData() {
         </div>`;
     };
 
-    // si longueur du message dans input est inferieur a 3 caractére return  message erreur
+    // si longueur du message dans input est inferieur à 3 caractères alors return  message erreur
     if (searchString.length < 3 && searchString.length > 0) {
         return cardsSection.innerHTML = `
         <div class="recipe-defaut">
@@ -278,14 +269,13 @@ export function filterData() {
     </div>`;
     } else {
         if (selectedTagsIngredients != ""||selectedTagsAppliance!=""||selectedTagsUstensils!="") {
-            var tri = [];
             if (selectedTagsIngredients != "") {
                 recipesSorted.forEach(function (element) {
                     var nbingredient = 0;
                         selectedTagsIngredients.forEach(function (tagingredient) {
                             let ingredientInside = false;
                             element.ingredients.forEach(function (lingredient) {
-                                console.log("ingredient examiner:" + tagingredient);
+                              
                                 if (lingredient.ingredient == tagingredient) {
                                     var dejapresent = false;
                                     tri.forEach(function (recette) {
@@ -300,7 +290,7 @@ export function filterData() {
                             });
                             if (ingredientInside == true) {
                                 nbingredient += 1;
-                                // console.log("tri element:" + tri);
+                               
                             }
                             if (nbingredient == selectedTagsIngredients.length) {
                                 tri.push(element);
@@ -338,7 +328,7 @@ export function filterData() {
                    // selectedTagsAppliance.forEach(function (tagappliance) {
                         tri.forEach(function (element) {
                             let appareil = false;
-                            console.log("appareil:" + element.appliance);
+                          
                             if (element.appliance == selectedTagsAppliance) {
                                 var dejapresent=false
                                 nvtri.forEach(function (recette) {
@@ -361,7 +351,6 @@ export function filterData() {
                    // selectedTagsAppliance.forEach(function (tagappliance) {
                         recipesSorted.forEach(function (element) {
                             let appareil = false;
-                            console.log("appareil:" + element.appliance + " tag:" + selectedTagsAppliance);
                             if (element.appliance == selectedTagsAppliance) {
                                 var dejapresent = false
                                 tri.forEach(function (recette) {
@@ -385,46 +374,79 @@ export function filterData() {
 
             }
             if (selectedTagsUstensils != "") {
+               
                 if (tri != "") {
-                    var nvtri = [];
+                    var nv_tri = [];
                     tri.forEach(function (element) {
-                        let ustensil = false;
-                        element.ustensils.forEach(function (lustensil) {
-                            lustensil.forEach(function (sustensil) {
-                                if (sustensil == selectedTagsUstensils) {
-                                    ustensil = true;
+                        var nbustensils = 0;
+                        element.ustensils.forEach(function (ustensil) {
+                            selectedTagsUstensils.forEach(function (selection) {
+                                if (ustensil == selection) {
+                                    nbustensils += 1;
                                 }
-                            });
+                            })
+                            if (nbustensils == selectedTagsUstensils.length) {
+                                var dejapresent = false;
+                                if (nv_tri != "") {
+                                    nv_tri.forEach(function (recette) {
+                                        if (recette.name == element.name) {
+                                            dejapresent = true;
+                                        }
+                                    })
+                                    if (dejapresent == false) {
+                                        nv_tri.push(element);
+                                    }
+                                } else {
+                                    nv_tri.push(element);
+                                }
+                            }
                         });
-                        if (ustensil = true) {
-                            nvtri.push(element);
-                        }
-                    });
-                    tri = nvtri;
+                    })
+                    tri=nv_tri
                 } else {
+                    var nv_tri = [];
                     recipesSorted.forEach(function (element) {
-                        let ustensil = false;
-                        element.ustensils.forEach(function (lustensil) {
-                                if (lustensil == selectedTagsUstensils) {
-                                    ustensil = true;
+                        var nbustensil = 0;
+                        element.ustensils.forEach(function (ustensil) {
+                            selectedTagsUstensils.forEach(function (selection) {
+                                if (ustensil == selection) {
+                                    nbustensil += 1;
                                 }
+                            })
+                            if (nbustensil == selectedTagsUstensils.length) {
+                                
+                                var dejapresent = false;
+                                if (nv_tri != "") {
+                                    nv_tri.forEach(function (recette) {
+                                        if (recette.name == element.name) {
+                                            dejapresent = true;
+                                        }
+                                    })
+                                    if (dejapresent == false) {
+                                        nv_tri.push(element);
+                                    }
+                                } else {
+                                    nv_tri.push(element);
+                                }
+                            }
                         });
-                        if (ustensil == true) {
-                            tri.push(element);
-                        }
                     });
+                    tri = nv_tri;
                 }
+                 //  sauv_tri = tri;
+                
+
 
             }
             list_recette_selectionner = tri;
-            console.log("tri:" + tri);
-            createRecipesList(tri);//creer la liste des recettes
+           
+            createRecipesList(tri);//créer la liste des recettes
             ingredientItem();
             applianceItem();
             ustensilsItem();
         } else {
             list_recette_selectionner = recipesSorted;
-            createRecipesList(recipesSorted);//creer la liste des recettes
+            createRecipesList(recipesSorted);//créer la liste des recettes
             ingredientItem();
             applianceItem();
             ustensilsItem();
